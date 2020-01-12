@@ -1,0 +1,507 @@
+<style>
+
+g.node circle{
+    /*  fill: #fff;*/
+    stroke: steelblue;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+.link {
+    fill: none;
+    stroke: #666;
+    stroke-width: 2px;
+    stroke-opacity: 0.3;
+}
+
+.link.rank{
+    stroke-opacity:0.05;
+}
+
+#sliderVisible{
+    visibility: visible;
+}
+
+.slider{
+    visibility: hidden;
+}
+
+.slider rect{    
+    fill: white;
+    opacity: 0.8;
+    stroke: #666;
+    stroke-width: 1px;
+    stroke-opacity: 0.3;
+}
+
+.slider #backsplash{
+    fill: white;
+    stroke: none;
+    opacity: 1;
+    /*
+    opacity: 0.8;
+    stroke: #666;
+    stroke-width: 1px;
+    stroke-opacity: 0.3;
+    */
+}
+
+.labelBack{
+    fill: white;
+}
+
+
+.slider text{
+    fill: black;
+}
+
+.link.rank.highlink {
+    fill: none;
+    stroke: #c00;
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+.link.highlink {
+    fill: none;
+    stroke: #c00;
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+/* disable text selection */
+svg *::selection {
+    background : transparent;
+}
+
+svg *::-moz-selection {
+    background:transparent;
+} 
+
+svg *::-webkit-selection {
+    background:transparent;
+}
+
+g{
+    background-color: white;
+}
+
+rect.selection {
+    stroke          : #333;
+    stroke-dasharray: 4px;
+    stroke-opacity  : 0.5;
+    fill            : transparent;
+}
+
+.backRowOdd{
+    fill: #fff;
+    /*    fill: #ddd;*/
+}
+
+.highlightRow{
+    /*    fill: #fff;*/
+    fill: #ddd;
+}
+
+.backRowEven{
+    fill: #fff ;
+
+}
+
+.row:hover{    
+    cursor: pointer;
+}
+
+rect.cell-border {
+    stroke: #eee;
+    stroke-width:1px;   
+}
+
+rect.cell-selected {
+    stroke: rgb(51,102,153);
+    stroke-width:0.5px;   
+}
+
+rect.cell-hover {
+    stroke: #F00;
+    stroke-width:0.3px;  
+    cursor: pointer; 
+}
+
+.selectedCell{
+    stroke: red;    
+}
+
+.selectedLbl{
+    fill: red;
+}
+
+.hipLink{
+    text-decoration-line: underline;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+/*#btFilter{
+fill:black  ! important;
+z-index: 7;
+}*/
+
+text {
+    font-size: 10.5pt;
+    /*    font-family: Consolas, calibri;*/
+    font-family: calibri;
+    /*    fill: black;*/
+}
+
+#widthTest {
+    font-size: 10.5pt;
+    font-family: calibri;
+    visibility: hidden;
+    /*    fill: #888;*/
+}
+
+text.text-selected {
+    fill: #000;
+}
+
+.text-highlight {
+    /*text.text-highlight {*/
+    fill: #c00;
+}
+text.text-hover {
+    fill: #00C;
+}
+#tooltip_matrix {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /*height: auto;*/
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    /*pointer-events: none;*/
+    overflow: auto;
+    /*    z-index: -15;*/
+ 
+}
+
+#tooltip_matrix p {
+    pointer-events: none;
+}
+
+#datatable tr { 
+    height: 40px;
+}
+
+#datatable tr:hover { 
+    cursor: pointer;
+}
+
+
+
+#chart{
+    background-color: white;
+}
+
+#tooltip_matrix.hidden {
+    display: none;
+}
+
+
+#tooltip_matrix p {
+    margin: 0;
+    font-family: calibri;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#wrapper {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#page-wrapper {
+    display: relative;
+    z-index: 0;
+}
+
+.navbar-toggle {
+    float: left !important;
+    margin-left: 15px;
+    display: block !important;
+}
+
+.sidebar {
+    transition: all 0.3s ease;
+    padding: 10 0 0 0 !important;
+    height: 100%;
+    width: 350px;
+}
+
+#settings{
+    padding: 0 10 0 10;
+    height: 100%;
+}
+
+.collapsed-bar {
+    display: none;
+}
+
+@media(min-width: 767px) {
+    .collapsed-bar {
+/*        display: block;*/
+        margin-left: -25%;
+    }
+}
+
+.stage {
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+#accordion {
+    position: relative;
+    z-index: 0;
+}
+
+#load-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.2);
+}
+
+#load-overlay img {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    -webkit-transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+}
+
+.colTriangle{
+    fill: lightgrey;  
+    opacity: 1;  
+}
+
+.colTriangleSelected{
+    /*fill: red;*/
+    opacity: 1;    
+}
+
+.colTriangle:hover{
+    fill: black;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.colGlabel:hover > .colTriangle{
+    fill: grey ;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.colGlabel{
+    cursor: pointer;
+}
+
+.colGlabel.selectedLbl{
+    fill: red;
+}
+
+
+.colTriangle.selectedCol text{
+    fill: black;
+    opacity: 1;
+}
+
+.triangleBox {
+    cursor: pointer;
+}
+
+span.errortag {
+    font-weight: bold;
+    padding: 0 1px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* The whole thing */
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: calibri;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.custom-menu li:hover {
+    background-color: #DEF;
+}
+
+
+.nav-pills>li>a, .nav-pills>li>a:hover, .nav-pills>li>a:focus{
+    border-radius: 0px;
+    height: 50px;
+    padding-top: 15px;
+    color:white;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color: #F5F5F5;
+    color:black;
+}
+
+.navbar{
+    background-color:dimgray; 
+}
+
+#title-brand{
+    color: white;
+}
+
+.Grammar{
+    background-color: #e377c2;
+}
+.Orthography{
+    background-color: #ff7f0e;
+}
+.Style{
+    background-color: #2ca02c;
+}
+.Miscellaneous{
+    background-color: #9467bd;
+}
+.Collocations{
+    background-color: #8c564b;
+}
+.Commonly.Confused.Words{
+    background-color: #bcbd22;
+}
+#datatable td {
+    position: relative;
+    padding: 1px;
+}
+.tbCellError{    
+    width: 100%;
+    height: 100%;
+    position:  absolute;
+    opacity: 0.5;
+    top: 2px;
+    left: 0;
+    white-space: nowrap;
+    display: grid;
+    grid-template-rows: 9fr 1fr;
+    padding-bottom: 2px;
+    border: 0.5px;
+    
+}
+.tbCellError span{
+    display: inline-block;
+    height: 100%;
+}
+
+.rowvisCat{
+    height: 100%;
+}
+
+.rowvisFreq{
+    background-color: black;
+    height: 5%;
+/*    top: 5;*/
+}
+
+#filter-cat {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: start;
+    grid-gap: 5px;
+}
+
+#filter-cat .title {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    grid-column-end: span 3;
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+#filter-cat .title .buttons {
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    font-weight: normal;
+}
+
+#filter-cat a {
+    cursor: pointer;
+}
+
+#filter-cat label {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+#filter-cat label span {
+    display: block;
+    margin: 0 auto;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#filter-cat label input {
+    display: none;
+}
+
+#filter-cat label:hover {
+    opacity: 1;
+}
+
+#filter-cat label.active {
+    border: 1px solid black;
+    opacity: 1;
+}
+
+#filter-lang,#filter-level, #filter-topic{
+    padding: 5px;
+    color: black;
+    font-weight: normal;
+}
+
+#datatable_length{
+    display: none;
+}
+
+
+
+</style>

@@ -1,0 +1,1094 @@
+{
+    "software": {
+        "name": "LanguageTool",
+        "version": "4.1-SNAPSHOT",
+        "buildDate": "2018-01-16 21:01",
+        "apiVersion": 1,
+        "status": ""
+    },
+    "warnings": {
+        "incompleteResults": false
+    },
+    "language": {
+        "name": "English",
+        "code": "en"
+    },
+    "matches": [
+        {
+            "message": "Use a comma before 'and' if it connects two independent clauses (unless they are closely connected and short).",
+            "shortMessage": "",
+            "replacements": [
+                {
+                    "value": "year, and"
+                }
+            ],
+            "offset": 107,
+            "length": 8,
+            "context": {
+                "text": "...e of my friend couldn't eat at all last year and she has lost a lot of weight. She went ...",
+                "offset": 43,
+                "length": 8
+            },
+            "sentence": "One of my friend couldn't eat at all last year and she has lost a lot of weight.",
+            "rule": {
+                "id": "COMMA_COMPOUND_SENTENCE",
+                "subId": "1",
+                "description": "comma between independent clauses",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "http://www.grammar-monster.com/lessons/commas_before_conjunctions.htm"
+                    }
+                ],
+                "category": {
+                    "id": "PUNCTUATION",
+                    "name": "Punctuation Errors"
+                }
+            }
+        },
+        {
+            "message": "ヒント: \"about\" (英語) は \"～について\" (日本語) を意味する \"vague\", \"lazy\", \"sloppy\"という意味ですか?",
+            "shortMessage": "空似言葉",
+            "replacements": [
+                {
+                    "value": "vague"
+                },
+                {
+                    "value": "lazy"
+                },
+                {
+                    "value": "sloppy"
+                }
+            ],
+            "offset": 259,
+            "length": 5,
+            "context": {
+                "text": "...th her these days and I'd like to write about eating disorders and how to prevent it....",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "I often talk with her these days and I'd like to write about eating disorders and how to prevent it.",
+            "rule": {
+                "id": "ABOUT",
+                "description": "空似言葉のヒント: about",
+                "issueType": "uncategorized",
+                "category": {
+                    "id": "FALSE_FRIENDS",
+                    "name": "空似言葉"
+                }
+            }
+        },
+        {
+            "message": "Did you forget a comma after a conjunctive/linking adverb?",
+            "shortMessage": "Punctuation error",
+            "replacements": [
+                {
+                    "value": "Thus,"
+                }
+            ],
+            "offset": 412,
+            "length": 4,
+            "context": {
+                "text": "...nt. Both of her parents are really big. Thus it is natural for her to be big. At jun...",
+                "offset": 43,
+                "length": 4
+            },
+            "sentence": "Thus it is natural for her to be big.",
+            "rule": {
+                "id": "SENT_START_CONJUNCTIVE_LINKING_ADVERB_COMMA",
+                "subId": "1",
+                "description": "Commas after conjunctive/linking adverbs in front of a new sentence.",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "https://writing.wisc.edu/Handbook/ConjAdv.html"
+                    }
+                ],
+                "category": {
+                    "id": "PUNCTUATION",
+                    "name": "Punctuation Errors"
+                }
+            }
+        },
+        {
+            "message": "ヒント: \"about\" (英語) は \"～について\" (日本語) を意味する \"vague\", \"lazy\", \"sloppy\"という意味ですか?",
+            "shortMessage": "空似言葉",
+            "replacements": [
+                {
+                    "value": "vague"
+                },
+                {
+                    "value": "lazy"
+                },
+                {
+                    "value": "sloppy"
+                }
+            ],
+            "offset": 581,
+            "length": 5,
+            "context": {
+                "text": "...dents. One day A was in a group talking about daily things, then the teacher walked b...",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "One day A was in a group talking about daily things, then the teacher walked by.",
+            "rule": {
+                "id": "ABOUT",
+                "description": "空似言葉のヒント: about",
+                "issueType": "uncategorized",
+                "category": {
+                    "id": "FALSE_FRIENDS",
+                    "name": "空似言葉"
+                }
+            }
+        },
+        {
+            "message": "Use a smart opening quote here: \"“\".",
+            "shortMessage": "Use smart quotes",
+            "replacements": [
+                {
+                    "value": "“"
+                }
+            ],
+            "offset": 661,
+            "length": 1,
+            "context": {
+                "text": "...ked by. He, without any intention, said \"You are big.\" to her. She was really sho...",
+                "offset": 43,
+                "length": 1
+            },
+            "sentence": "He, without any intention, said \"You are big.\" to her.",
+            "rule": {
+                "id": "EN_QUOTES",
+                "subId": "1",
+                "description": "Smart quotes (“”)",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "https://en.wikipedia.org/wiki/Smart_quote#Electronic_documents"
+                    }
+                ],
+                "category": {
+                    "id": "TYPOGRAPHY",
+                    "name": "Typography"
+                }
+            }
+        },
+        {
+            "message": "Use a smart closing quote here: \"”\".",
+            "shortMessage": "Use smart quotes",
+            "replacements": [
+                {
+                    "value": "”"
+                }
+            ],
+            "offset": 674,
+            "length": 1,
+            "context": {
+                "text": "...ithout any intention, said \"You are big.\" to her. She was really shocked since th...",
+                "offset": 43,
+                "length": 1
+            },
+            "sentence": "He, without any intention, said \"You are big.\" to her.",
+            "rule": {
+                "id": "EN_QUOTES",
+                "subId": "2",
+                "description": "Smart quotes (“”)",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "https://en.wikipedia.org/wiki/Smart_quote#Electronic_documents"
+                    }
+                ],
+                "category": {
+                    "id": "TYPOGRAPHY",
+                    "name": "Typography"
+                }
+            }
+        },
+        {
+            "message": "Three successive sentences begin with the same word. Consider rewording the sentence or use a thesaurus to find a synonym.",
+            "shortMessage": "Three successive sentences begin with the same word.",
+            "replacements": [],
+            "offset": 748,
+            "length": 3,
+            "context": {
+                "text": "...ince then. She didn't want to eat much. She seemed OK for a while and we graduated ...",
+                "offset": 43,
+                "length": 3
+            },
+            "sentence": "She seemed OK for a while and we graduated junior high school.",
+            "rule": {
+                "id": "ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+                "description": "Successive sentences beginning with the same word",
+                "issueType": "style",
+                "category": {
+                    "id": "STYLE",
+                    "name": "Style"
+                }
+            }
+        },
+        {
+            "message": "Use a comma before 'and' if it connects two independent clauses (unless they are closely connected and short).",
+            "shortMessage": "",
+            "replacements": [
+                {
+                    "value": "while, and"
+                }
+            ],
+            "offset": 768,
+            "length": 9,
+            "context": {
+                "text": "...t want to eat much. She seemed OK for a while and we graduated junior high school. We wen...",
+                "offset": 43,
+                "length": 9
+            },
+            "sentence": "She seemed OK for a while and we graduated junior high school.",
+            "rule": {
+                "id": "COMMA_COMPOUND_SENTENCE",
+                "subId": "1",
+                "description": "comma between independent clauses",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "http://www.grammar-monster.com/lessons/commas_before_conjunctions.htm"
+                    }
+                ],
+                "category": {
+                    "id": "PUNCTUATION",
+                    "name": "Punctuation Errors"
+                }
+            }
+        },
+        {
+            "message": "The verb 'to graduate' requires the preposition 'from': \"graduated from\".",
+            "shortMessage": "",
+            "replacements": [
+                {
+                    "value": "graduated from"
+                }
+            ],
+            "offset": 781,
+            "length": 9,
+            "context": {
+                "text": "... much. She seemed OK for a while and we graduated junior high school. We went to differen...",
+                "offset": 43,
+                "length": 9
+            },
+            "sentence": "She seemed OK for a while and we graduated junior high school.",
+            "rule": {
+                "id": "GRADUATE_FROM",
+                "subId": "1",
+                "description": "graduate from",
+                "issueType": "grammar",
+                "urls": [
+                    {
+                        "value": "https://www.merriam-webster.com/dictionary/graduate"
+                    }
+                ],
+                "category": {
+                    "id": "GRAMMAR",
+                    "name": "Grammar"
+                }
+            }
+        },
+        {
+            "message": "ヒント: \"about\" (英語) は \"～について\" (日本語) を意味する \"vague\", \"lazy\", \"sloppy\"という意味ですか?",
+            "shortMessage": "空似言葉",
+            "replacements": [
+                {
+                    "value": "vague"
+                },
+                {
+                    "value": "lazy"
+                },
+                {
+                    "value": "sloppy"
+                }
+            ],
+            "offset": 867,
+            "length": 5,
+            "context": {
+                "text": "...rent high schools and I don't know much about her life in high school. We sometimes w...",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "We went to different high schools and I don't know much about her life in high school.",
+            "rule": {
+                "id": "ABOUT",
+                "description": "空似言葉のヒント: about",
+                "issueType": "uncategorized",
+                "category": {
+                    "id": "FALSE_FRIENDS",
+                    "name": "空似言葉"
+                }
+            }
+        },
+        {
+            "message": "“Since” at the beginning of a sentence requires a 2nd clause. Maybe a comma, question or exclamation mark is missing, or the sentence is incomplete and should be joined with the following sentence. ",
+            "shortMessage": "Punctuation error, sentence looks like a fragment",
+            "replacements": [],
+            "offset": 1077,
+            "length": 5,
+            "context": {
+                "text": "...urprised that she is majoring math now. Since then we often meet at lunch time. We ta...",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "Since then we often meet at lunch time.",
+            "rule": {
+                "id": "SENTENCE_FRAGMENT",
+                "subId": "1",
+                "description": "Sentence is a fragment",
+                "issueType": "grammar",
+                "urls": [
+                    {
+                        "value": "http://www.chompchomp.com/rules/fragrules.htm"
+                    }
+                ],
+                "category": {
+                    "id": "GRAMMAR",
+                    "name": "Grammar"
+                }
+            }
+        },
+        {
+            "message": "The comma is probably missing here: \"then, we\".",
+            "shortMessage": "Missing comma",
+            "replacements": [
+                {
+                    "value": "then, we"
+                }
+            ],
+            "offset": 1083,
+            "length": 7,
+            "context": {
+                "text": "...ed that she is majoring math now. Since then we often meet at lunch time. We talk a lot...",
+                "offset": 43,
+                "length": 7
+            },
+            "sentence": "Since then we often meet at lunch time.",
+            "rule": {
+                "id": "MISSING_COMMA_AFTER_INTRODUCTORY_PHRASE",
+                "subId": "1",
+                "description": "Missing comma after introductory phrase",
+                "issueType": "typographical",
+                "urls": [
+                    {
+                        "value": "http://englishplus.com/grammar/00000074.htm"
+                    }
+                ],
+                "category": {
+                    "id": "PUNCTUATION",
+                    "name": "Punctuation Errors"
+                }
+            }
+        },
+        {
+            "message": "This word is normally spelled as one.",
+            "shortMessage": "Hyphenation problem",
+            "replacements": [
+                {
+                    "value": "lunchtime"
+                }
+            ],
+            "offset": 1105,
+            "length": 10,
+            "context": {
+                "text": "...g math now. Since then we often meet at lunch time. We talk a lot. Her talk sounded misera...",
+                "offset": 43,
+                "length": 10
+            },
+            "sentence": "Since then we often meet at lunch time.",
+            "rule": {
+                "id": "EN_COMPOUNDS",
+                "description": "Hyphenated words, e.g., 'case-sensitive' instead of 'case sensitive'",
+                "issueType": "misspelling",
+                "category": {
+                    "id": "MISC",
+                    "name": "Miscellaneous"
+                }
+            }
+        },
+        {
+            "message": "The pronoun 'she' is usually used with a third-person or a past tense verb: \"falls\", \"fell\".",
+            "shortMessage": "Agreement error",
+            "replacements": [
+                {
+                    "value": "falls"
+                },
+                {
+                    "value": "fell"
+                }
+            ],
+            "offset": 1344,
+            "length": 4,
+            "context": {
+                "text": "...is interested in math so much she often fall in love with people with mathematical b...",
+                "offset": 43,
+                "length": 4
+            },
+            "sentence": "Maybe since she is interested in math so much she often fall in love with people with mathematical brain.",
+            "rule": {
+                "id": "HE_VERB_AGR",
+                "subId": "3",
+                "description": "Agreement error: Non-third person/past tense verb with 'he/she/it' or a pronoun",
+                "issueType": "grammar",
+                "category": {
+                    "id": "GRAMMAR",
+                    "name": "Grammar"
+                }
+            }
+        },
+        {
+            "message": "ヒント: \"about\" (英語) は \"～について\" (日本語) を意味する \"vague\", \"lazy\", \"sloppy\"という意味ですか?",
+            "shortMessage": "空似言葉",
+            "replacements": [
+                {
+                    "value": "vague"
+                },
+                {
+                    "value": "lazy"
+                },
+                {
+                    "value": "sloppy"
+                }
+            ],
+            "offset": 2294,
+            "length": 5,
+            "context": {
+                "text": ".... She was asked from the doctor to talk about math teacher, how she liked him and eve...",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "She was asked from the doctor to talk about math teacher, how she liked him and everything.",
+            "rule": {
+                "id": "ABOUT",
+                "description": "空似言葉のヒント: about",
+                "issueType": "uncategorized",
+                "category": {
+                    "id": "FALSE_FRIENDS",
+                    "name": "空似言葉"
+                }
+            }
+        },
+        {
+            "message": "Comparison requires \"than\", not 'then' nor 'as'.",
+            "shortMessage": "Grammatical problem: use 'than'",
+            "replacements": [
+                {
+                    "value": "than"
+                }
+            ],
+            "offset": 2438,
+            "length": 4,
+            "context": {
+                "text": "...he had a problem with her heart earlier then her daughter could have recovered earli...",
+                "offset": 43,
+                "length": 4
+            },
+            "sentence": "Her mother regretted that if she could know that she had a problem with her heart earlier then her daughter could have recovered earlier.",
+            "rule": {
+                "id": "COMP_THAN",
+                "subId": "3",
+                "description": "Comparison with 'than', e.g. 'bigger then (than)'",
+                "issueType": "grammar",
+                "category": {
+                    "id": "GRAMMAR",
+                    "name": "Grammar"
+                }
+            }
+        },
+        {
+            "message": "ヒント: \"about\" (英語) は \"～について\" (日本語) を意味する \"vague\", \"lazy\", \"sloppy\"という意味ですか?",
+            "shortMessage": "空似言葉",
+            "replacements": [
+                {
+                    "value": "vague"
+                },
+                {
+                    "value": "lazy"
+                },
+                {
+                    "value": "sloppy"
+                }
+            ],
+            "offset": 2578,
+            "length": 5,
+            "context": {
+                "text": "...sorder. If we don't have some knowledge about this kind of mental disorder, what we a...",
+                "offset": 43,
+                "length": 5
+            },
+            "sentence": "If we don't have some knowledge about this kind of mental disorder, what we advice to the patience may cause more problems.",
+            "rule": {
+                "id": "ABOUT",
+                "description": "空似言葉のヒント: about",
+                "issueType": "uncategorized",
+                "category": {
+                    "id": "FALSE_FRIENDS",
+                    "name": "空似言葉"
+                }
+            }
+        },
+        {
+            "message": "Did you mean \"advise\" (verb) instead of advice (noun)?",
+            "shortMessage": "Possible typo",
+            "replacements": [
+                {
+                    "value": "advise"
+                }
+            ],
+            "offset": 2622,
+            "length": 6,
+            "context": {
+                "text": "...t this kind of mental disorder, what we advice to the patience may cause more problems...",
+                "offset": 43,
+                "length": 6
+            },
+            "sentence": "If we don't have some knowledge about this kind of mental disorder, what we advice to the patience may cause more problems.",
+            "rule": {
+                "id": "ADVICE_ADVISE",
+                "subId": "1",
+                "description": "advice (advise)",
+                "issueType": "grammar",
+                "urls": [
+                    {
+                        "value": "http://www.grammar-monster.com/easily_confused/advice_advise.htm"
+                    }
+                ],
+                "category": {
+                    "id": "CONFUSED_WORDS",
+                    "name": "Commonly Confused Words"
+                }
+            }
+        },
+        {
+            "message": "Statistics suggests that 'patients' (person who gets medical care) might be the correct word here, not 'patience' (tolerance of delay). Please check.",
+            "shortMessage": "",
+            "replacements": [
+                {
+                    "value": "patients"
+                }
+            ],
+            "offset": 2636,
+            "length": 8,
+            "context": {
+                "text": "... mental disorder, what we advice to the patience may cause more problems. I am not the o...",
+                "offset": 43,
+                "length": 8
+            },
+            "sentence": "If we don't have some knowledge about this kind of mental disorder, what we advice to the patience may cause more problems.",
+            "rule": {
+                "id": "CONFUSION_RULE",
+                "description": "Statistically detect wrong use of words that are easily confused",
+                "issueType": "non-conformance",
+                "category": {
+                    "id": "TYPOS",
+                    "name": "Possible Typo"
+                }
+            }
+        },
+        {
+            "message": "Did you mean \"advise\" (a verb)?",
+            "shortMessage": "Possible typo",
+            "replacements": [
+                {
+                    "value": "advise"
+                }
+            ],
+            "offset": 3034,
+            "length": 6,
+            "context": {
+                "text": "...ed to be checked by a doctor, we should advice so. It is not good for our friend that ...",
+                "offset": 43,
+                "length": 6
+            },
+            "sentence": "If we think that the person need to be checked by a doctor, we should advice so.",
+            "rule": {
+                "id": "GIVE_ADVISE",
+                "subId": "4",
+                "description": "give/any/of advise (advice)",
+                "issueType": "misspelling",
+                "urls": [
+                    {
+                        "value": "http://www.grammar-monster.com/easily_confused/advice_advise.htm"
+                    }
+                ],
+                "category": {
+                    "id": "CONFUSED_WORDS",
+                    "name": "Commonly Confused Words"
+                }
+            }
+        }
+    ]
+}
+
+
+
+
+{
+  "software": {
+    "name": "LanguageTool",
+    "version": "4.1-SNAPSHOT",
+    "buildDate": "2018-01-16 21:01",
+    "apiVersion": 1,
+    "status": ""
+  },
+  "warnings": {
+    "incompleteResults": false
+  },
+  "language": {
+    "name": "English",
+    "code": "en"
+  },
+  "matches": [
+    {
+      "message": "Use a comma before 'and' if it connects two independent clauses (unless they are closely connected and short).",
+      "shortMessage": "",
+      "replacements": [
+        {
+          "value": "year, and"
+        }
+      ],
+      "offset": 107,
+      "length": 8,
+      "context": {
+        "text": "...e of my friend couldn't eat at all last year and she has lost a lot of weight. She went ...",
+        "offset": 43,
+        "length": 8
+      },
+      "sentence": "One of my friend couldn't eat at all last year and she has lost a lot of weight.",
+      "rule": {
+        "id": "COMMA_COMPOUND_SENTENCE",
+        "subId": "1",
+        "description": "comma between independent clauses",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "http://www.grammar-monster.com/lessons/commas_before_conjunctions.htm"
+          }
+        ],
+        "category": {
+          "id": "PUNCTUATION",
+          "name": "Punctuation Errors"
+        }
+      }
+    },
+    {
+      "message": "Did you forget a comma after a conjunctive/linking adverb?",
+      "shortMessage": "Punctuation error",
+      "replacements": [
+        {
+          "value": "Thus,"
+        }
+      ],
+      "offset": 412,
+      "length": 4,
+      "context": {
+        "text": "...nt. Both of her parents are really big. Thus it is natural for her to be big. At jun...",
+        "offset": 43,
+        "length": 4
+      },
+      "sentence": "Thus it is natural for her to be big.",
+      "rule": {
+        "id": "SENT_START_CONJUNCTIVE_LINKING_ADVERB_COMMA",
+        "subId": "1",
+        "description": "Commas after conjunctive/linking adverbs in front of a new sentence.",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "https://writing.wisc.edu/Handbook/ConjAdv.html"
+          }
+        ],
+        "category": {
+          "id": "PUNCTUATION",
+          "name": "Punctuation Errors"
+        }
+      }
+    },
+    {
+      "message": "Use a smart opening quote here: \"“\".",
+      "shortMessage": "Use smart quotes",
+      "replacements": [
+        {
+          "value": "“"
+        }
+      ],
+      "offset": 661,
+      "length": 1,
+      "context": {
+        "text": "...ked by. He, without any intention, said \"You are big.\" to her. She was really sho...",
+        "offset": 43,
+        "length": 1
+      },
+      "sentence": "He, without any intention, said \"You are big.\" to her.",
+      "rule": {
+        "id": "EN_QUOTES",
+        "subId": "1",
+        "description": "Smart quotes (“”)",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "https://en.wikipedia.org/wiki/Smart_quote#Electronic_documents"
+          }
+        ],
+        "category": {
+          "id": "TYPOGRAPHY",
+          "name": "Typography"
+        }
+      }
+    },
+    {
+      "message": "Use a smart closing quote here: \"”\".",
+      "shortMessage": "Use smart quotes",
+      "replacements": [
+        {
+          "value": "”"
+        }
+      ],
+      "offset": 674,
+      "length": 1,
+      "context": {
+        "text": "...ithout any intention, said \"You are big.\" to her. She was really shocked since th...",
+        "offset": 43,
+        "length": 1
+      },
+      "sentence": "He, without any intention, said \"You are big.\" to her.",
+      "rule": {
+        "id": "EN_QUOTES",
+        "subId": "2",
+        "description": "Smart quotes (“”)",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "https://en.wikipedia.org/wiki/Smart_quote#Electronic_documents"
+          }
+        ],
+        "category": {
+          "id": "TYPOGRAPHY",
+          "name": "Typography"
+        }
+      }
+    },
+    {
+      "message": "Three successive sentences begin with the same word. Consider rewording the sentence or use a thesaurus to find a synonym.",
+      "shortMessage": "Three successive sentences begin with the same word.",
+      "replacements": [],
+      "offset": 748,
+      "length": 3,
+      "context": {
+        "text": "...ince then. She didn't want to eat much. She seemed OK for a while and we graduated ...",
+        "offset": 43,
+        "length": 3
+      },
+      "sentence": "She seemed OK for a while and we graduated junior high school.",
+      "rule": {
+        "id": "ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+        "description": "Successive sentences beginning with the same word",
+        "issueType": "style",
+        "category": {
+          "id": "STYLE",
+          "name": "Style"
+        }
+      }
+    },
+    {
+      "message": "Use a comma before 'and' if it connects two independent clauses (unless they are closely connected and short).",
+      "shortMessage": "",
+      "replacements": [
+        {
+          "value": "while, and"
+        }
+      ],
+      "offset": 768,
+      "length": 9,
+      "context": {
+        "text": "...t want to eat much. She seemed OK for a while and we graduated junior high school. We wen...",
+        "offset": 43,
+        "length": 9
+      },
+      "sentence": "She seemed OK for a while and we graduated junior high school.",
+      "rule": {
+        "id": "COMMA_COMPOUND_SENTENCE",
+        "subId": "1",
+        "description": "comma between independent clauses",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "http://www.grammar-monster.com/lessons/commas_before_conjunctions.htm"
+          }
+        ],
+        "category": {
+          "id": "PUNCTUATION",
+          "name": "Punctuation Errors"
+        }
+      }
+    },
+    {
+      "message": "The verb 'to graduate' requires the preposition 'from': \"graduated from\".",
+      "shortMessage": "",
+      "replacements": [
+        {
+          "value": "graduated from"
+        }
+      ],
+      "offset": 781,
+      "length": 9,
+      "context": {
+        "text": "... much. She seemed OK for a while and we graduated junior high school. We went to differen...",
+        "offset": 43,
+        "length": 9
+      },
+      "sentence": "She seemed OK for a while and we graduated junior high school.",
+      "rule": {
+        "id": "GRADUATE_FROM",
+        "subId": "1",
+        "description": "graduate from",
+        "issueType": "grammar",
+        "urls": [
+          {
+            "value": "https://www.merriam-webster.com/dictionary/graduate"
+          }
+        ],
+        "category": {
+          "id": "GRAMMAR",
+          "name": "Grammar"
+        }
+      }
+    },
+    {
+      "message": "“Since” at the beginning of a sentence requires a 2nd clause. Maybe a comma, question or exclamation mark is missing, or the sentence is incomplete and should be joined with the following sentence. ",
+      "shortMessage": "Punctuation error, sentence looks like a fragment",
+      "replacements": [],
+      "offset": 1077,
+      "length": 5,
+      "context": {
+        "text": "...urprised that she is majoring math now. Since then we often meet at lunch time. We ta...",
+        "offset": 43,
+        "length": 5
+      },
+      "sentence": "Since then we often meet at lunch time.",
+      "rule": {
+        "id": "SENTENCE_FRAGMENT",
+        "subId": "1",
+        "description": "Sentence is a fragment",
+        "issueType": "grammar",
+        "urls": [
+          {
+            "value": "http://www.chompchomp.com/rules/fragrules.htm"
+          }
+        ],
+        "category": {
+          "id": "GRAMMAR",
+          "name": "Grammar"
+        }
+      }
+    },
+    {
+      "message": "The comma is probably missing here: \"then, we\".",
+      "shortMessage": "Missing comma",
+      "replacements": [
+        {
+          "value": "then, we"
+        }
+      ],
+      "offset": 1083,
+      "length": 7,
+      "context": {
+        "text": "...ed that she is majoring math now. Since then we often meet at lunch time. We talk a lot...",
+        "offset": 43,
+        "length": 7
+      },
+      "sentence": "Since then we often meet at lunch time.",
+      "rule": {
+        "id": "MISSING_COMMA_AFTER_INTRODUCTORY_PHRASE",
+        "subId": "1",
+        "description": "Missing comma after introductory phrase",
+        "issueType": "typographical",
+        "urls": [
+          {
+            "value": "http://englishplus.com/grammar/00000074.htm"
+          }
+        ],
+        "category": {
+          "id": "PUNCTUATION",
+          "name": "Punctuation Errors"
+        }
+      }
+    },
+    {
+      "message": "This word is normally spelled as one.",
+      "shortMessage": "Hyphenation problem",
+      "replacements": [
+        {
+          "value": "lunchtime"
+        }
+      ],
+      "offset": 1105,
+      "length": 10,
+      "context": {
+        "text": "...g math now. Since then we often meet at lunch time. We talk a lot. Her talk sounded misera...",
+        "offset": 43,
+        "length": 10
+      },
+      "sentence": "Since then we often meet at lunch time.",
+      "rule": {
+        "id": "EN_COMPOUNDS",
+        "description": "Hyphenated words, e.g., 'case-sensitive' instead of 'case sensitive'",
+        "issueType": "misspelling",
+        "category": {
+          "id": "MISC",
+          "name": "Miscellaneous"
+        }
+      }
+    },
+    {
+      "message": "The pronoun 'she' is usually used with a third-person or a past tense verb: \"falls\", \"fell\".",
+      "shortMessage": "Agreement error",
+      "replacements": [
+        {
+          "value": "falls"
+        },
+        {
+          "value": "fell"
+        }
+      ],
+      "offset": 1344,
+      "length": 4,
+      "context": {
+        "text": "...is interested in math so much she often fall in love with people with mathematical b...",
+        "offset": 43,
+        "length": 4
+      },
+      "sentence": "Maybe since she is interested in math so much she often fall in love with people with mathematical brain.",
+      "rule": {
+        "id": "HE_VERB_AGR",
+        "subId": "3",
+        "description": "Agreement error: Non-third person/past tense verb with 'he/she/it' or a pronoun",
+        "issueType": "grammar",
+        "category": {
+          "id": "GRAMMAR",
+          "name": "Grammar"
+        }
+      }
+    },
+    {
+      "message": "Comparison requires \"than\", not 'then' nor 'as'.",
+      "shortMessage": "Grammatical problem: use 'than'",
+      "replacements": [
+        {
+          "value": "than"
+        }
+      ],
+      "offset": 2438,
+      "length": 4,
+      "context": {
+        "text": "...he had a problem with her heart earlier then her daughter could have recovered earli...",
+        "offset": 43,
+        "length": 4
+      },
+      "sentence": "Her mother regretted that if she could know that she had a problem with her heart earlier then her daughter could have recovered earlier.",
+      "rule": {
+        "id": "COMP_THAN",
+        "subId": "3",
+        "description": "Comparison with 'than', e.g. 'bigger then (than)'",
+        "issueType": "grammar",
+        "category": {
+          "id": "GRAMMAR",
+          "name": "Grammar"
+        }
+      }
+    },
+    {
+      "message": "Did you mean \"advise\" (verb) instead of advice (noun)?",
+      "shortMessage": "Possible typo",
+      "replacements": [
+        {
+          "value": "advise"
+        }
+      ],
+      "offset": 2622,
+      "length": 6,
+      "context": {
+        "text": "...t this kind of mental disorder, what we advice to the patience may cause more problems...",
+        "offset": 43,
+        "length": 6
+      },
+      "sentence": "If we don't have some knowledge about this kind of mental disorder, what we advice to the patience may cause more problems.",
+      "rule": {
+        "id": "ADVICE_ADVISE",
+        "subId": "1",
+        "description": "advice (advise)",
+        "issueType": "grammar",
+        "urls": [
+          {
+            "value": "http://www.grammar-monster.com/easily_confused/advice_advise.htm"
+          }
+        ],
+        "category": {
+          "id": "CONFUSED_WORDS",
+          "name": "Commonly Confused Words"
+        }
+      }
+    },
+    {
+      "message": "Statistics suggests that 'patients' (person who gets medical care) might be the correct word here, not 'patience' (tolerance of delay). Please check.",
+      "shortMessage": "",
+      "replacements": [
+        {
+          "value": "patients"
+        }
+      ],
+      "offset": 2636,
+      "length": 8,
+      "context": {
+        "text": "... mental disorder, what we advice to the patience may cause more problems. I am not the o...",
+        "offset": 43,
+        "length": 8
+      },
+      "sentence": "If we don't have some knowledge about this kind of mental disorder, what we advice to the patience may cause more problems.",
+      "rule": {
+        "id": "CONFUSION_RULE",
+        "description": "Statistically detect wrong use of words that are easily confused",
+        "issueType": "non-conformance",
+        "category": {
+          "id": "TYPOS",
+          "name": "Possible Typo"
+        }
+      }
+    },
+    {
+      "message": "Did you mean \"advise\" (a verb)?",
+      "shortMessage": "Possible typo",
+      "replacements": [
+        {
+          "value": "advise"
+        }
+      ],
+      "offset": 3034,
+      "length": 6,
+      "context": {
+        "text": "...ed to be checked by a doctor, we should advice so. It is not good for our friend that ...",
+        "offset": 43,
+        "length": 6
+      },
+      "sentence": "If we think that the person need to be checked by a doctor, we should advice so.",
+      "rule": {
+        "id": "GIVE_ADVISE",
+        "subId": "4",
+        "description": "give/any/of advise (advice)",
+        "issueType": "misspelling",
+        "urls": [
+          {
+            "value": "http://www.grammar-monster.com/easily_confused/advice_advise.htm"
+          }
+        ],
+        "category": {
+          "id": "CONFUSED_WORDS",
+          "name": "Commonly Confused Words"
+        }
+      }
+    }
+  ]
+}

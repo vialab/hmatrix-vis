@@ -1,0 +1,216 @@
+html *{
+    font-family: Verdana, Geneva, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    align-content: center;
+    font-weight: normal;
+}
+
+a:hover {
+ cursor:pointer;
+}
+
+
+
+table {
+    width:100%;
+    padding: 80px 0px 50px 0px;            
+}
+
+table tr th {    
+    padding: 30 20;    
+    color: navy;
+    align-content: center;    
+}
+
+.buttons {
+    background-color: steelblue;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5px;
+    cursor: pointer;
+}
+
+.word-group {
+    text-align: center;
+    margin: 50px 0px;
+}
+
+#btCopy {
+    background-color: steelblue;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5px;
+    cursor: pointer;
+}
+
+
+.opt{
+    
+    text-align:left; 
+    font-size:11px;
+    font-style: normal;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: normal;
+    padding: 0px 0px 4px 4px;
+    
+    
+}
+.tb-cell{    
+    vertical-align: middle;    
+    padding: 3px;
+}
+
+#grey{
+    color: black;
+    font-weight: normal;
+    
+}
+
+.opt label{
+  font-weight: normal;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+
+#header{
+    font-size: 12px;    
+    top: 50%;
+    left: 50%;
+    text-align: right;
+    padding: 0 0;
+}
+
+#title{
+    text-align: center;
+    font-size: 26px;    
+    color: steelblue;
+}
+
+#page{
+    padding: 0px 30px;
+    height: 60%;
+    width: 100%;
+}
+
+#panel {
+    width: 100%;
+    padding: 0 0;    
+    font-size: 16px;    
+    
+}
+
+#image{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#consentform{
+    font-size: 13px;
+    padding: 5px 30px;
+    line-height: 200%;
+}
+
+#consentform_header {
+    
+    
+}
+
+.flex{
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+
+#status{
+    font-size: 12px;
+    text-align: center;
+    color: dodgerblue;
+}
+
+
+blue{
+    color: steelblue;
+}
+
+b{
+    font-weight: bold;
+}
+
+a{
+    align-content: center;
+}
+
+#question{
+    font-size: 14px;
+    padding: 10px 10px 50px 0px;
+    
+}
+
+#question2{
+    font-size: 14px;
+    padding: 10px 10px 50px 0px;
+    visibility: hidden;
+    
+}
+
+.answer{
+    visibility: hidden;
+    height: 0px;
+}
+
+#loadQ{
+    visibility: hidden;
+    height:20px;
+}
+
+.answer2{
+    visibility: visible;
+    height: 50px;
+    align-content: center;
+}
+
+#loadQ2{
+    visibility: visible;
+    height: 0px;
+}
+
+.footer{
+    margin-top: 110px;
+    padding: 0 0;
+    text-align: center;
+}
+
+.smallfont {
+    font-size: 12px;
+    font-weight: 100;
+    vertical-align: top;
+    padding: 10px 0px;
+  
+    color: black;
+   
+}
+
+.quitButton{
+    color: dimgray;
+    align-self: right;
+}
+
+button{
+    font-size: 16px;
+}
+

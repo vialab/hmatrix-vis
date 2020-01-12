@@ -1,0 +1,542 @@
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+
+        <title>ENTRAFX - English Transfer Effects Visual Analysis</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="js/d3.v4.min.js"></script>
+
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <script src="d3slider-master/dist/d3slider.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+        <script type="text/javascript" src="js/textlevel.js"></script>
+        <script type="text/javascript" src="js/matrix.js"></script>
+        <script type="text/javascript" src="js/tree.js"></script>
+        <script type="text/javascript" src="js/dedrogram.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/d3-legend/1.13.0/d3-legend.min.js"></script>
+
+
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="css/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <!--        <link href="css/dist/css/sb-admin-2.css" rel="stylesheet">-->
+
+        <!-- Custom Fonts -->
+        <link href="css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!--        from text level scripts datatables-->
+
+        <!-- DataTables CSS -->
+        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+        <!--        <link href="css/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">-->
+
+        <!-- DataTables Responsive CSS -->
+        <!--        <link href="css/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">-->
+
+
+        <link href="css/matrix.css" rel="stylesheet">
+
+        <!--        Languagetool install-->
+
+
+        <script type="text/javascript"
+                src="//www.languagetool.org/online-check/tiny_mce/tiny_mce.js"></script>
+        <script type="text/javascript"
+                src="//www.languagetool.org/online-check/tiny_mce/plugins/atd-tinymce/editor_plugin2.js"></script>
+
+        <script language="javascript" type="text/javascript">  
+            tinyMCE.init({
+                mode : "textareas",
+                plugins : "AtD,paste",
+                paste_text_sticky : true,
+                setup : function(ed) {
+                    ed.onInit.add(function(ed) {
+                        ed.pasteAsPlainText = true;
+                    });
+                },  
+                /* translations: */
+                languagetool_i18n_no_errors : {
+                    // "No errors were found.":
+                    "de-DE": "Keine Fehler gefunden."
+                },
+                languagetool_i18n_explain : {
+                    // "Explain..." - shown if there is an URL with a detailed description:
+                    "de-DE": "Mehr Informationen..."
+                },
+                languagetool_i18n_ignore_once : {
+                    // "Ignore this error":
+                    "de-DE": "Hier ignorieren"
+                },
+                languagetool_i18n_ignore_all : {
+                    // "Ignore this kind of error":
+                    "de-DE": "Fehler dieses Typs ignorieren"
+                },
+                languagetool_i18n_rule_implementation : {
+                    // "Rule implementation":
+                    "de-DE": "Implementierung der Regel"
+                },
+
+                languagetool_i18n_current_lang :
+                function() { return document.checkform.lang.value; },
+                /* The URL of your LanguageTool server.
+        If you use your own server here and it's not running on the same domain 
+        as the text form, make sure the server gets started with '--allow-origin ...' 
+        and use 'https://your-server/v2/check' as URL: */
+                languagetool_rpc_url                 : "https://languagetool.org/api/v2/check",
+                /* edit this file to customize how LanguageTool shows errors: */
+                languagetool_css_url :
+                "//www.languagetool.org/online-check/" +
+                "tiny_mce/plugins/atd-tinymce/css/content.css",
+                /* this stuff is a matter of preference: */
+                theme                              : "advanced",
+                theme_advanced_buttons1            : "",
+                theme_advanced_buttons2            : "",
+                theme_advanced_buttons3            : "",
+                theme_advanced_toolbar_location    : "none",
+                theme_advanced_toolbar_align       : "left",
+                theme_advanced_statusbar_location  : "bottom",
+                theme_advanced_path                : false,
+                theme_advanced_resizing            : true,
+                theme_advanced_resizing_use_cookie : false,
+                gecko_spellcheck                   : false
+            });
+
+            function doit() {
+                var langCode = document.checkform.lang.value;
+                tinyMCE.activeEditor.execCommand("mceWritingImprovementTool", langCode);
+            }
+        </script>
+
+
+        <!-- DataTables JavaScript -->
+        <!--
+<script src="css/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="css/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="css/vendor/datatables-responsive/dataTables.responsive.js"></script>
+-->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header col-sm-12">
+                    <button type="button" class="navbar-toggle" style="border: none" onclick="toggleSidebar()">
+                        <span class="glyphicon glyphicon-cog" style="color: aliceblue"></span>
+
+                    </button>
+
+
+                    <ul class="nav nav-pills" >
+                        <li class="nav-item active" >
+                            <a id="hmatrix-tab" class=" nav-link active " href="#1" data-toggle="pill" role="tab" aria-controls="#1" aria-selected="true">H-Matrix</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="textview-tab" class="nav-link " href="#2" data-toggle="pill" role="tab" aria-controls="#2" aria-selected="false">Text View</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a id="about-tab" class="nav-link " href="#3" data-toggle="pill" role="tab" aria-controls="#3" aria-selected="false">About</a>
+                        </li >                        
+                        <a id='title-brand' class="navbar-brand navbar-right" href="index.html">ENTRAFX - English Transfer Effects Visual Analysis</a>
+                    </ul>
+
+                </div>
+
+            </nav>
+
+
+            <!-- Page Content -->
+            <div id="page-wrapper" style="margin-top: 50px" height=100%;>
+                <div class="navbar-default sidebar col-sm-5 collapsed-bar" role="navigation">
+                    <div class="sidebar-nav">                       
+                        <h3> Matrix Settings</h3><br>
+
+                        <div id="settings">                        
+                            <legend>Display Value</legend>
+                            <div id="displayDiv">
+                                <form class="form-inline" role="form">
+                                    <label class="radio-inline"><input type="radio" name="optvalue" checked value="gscore"> G-score </label>
+                                    <label class="radio-inline"><input type="radio" name="optvalue" value="freq" > Frequency </label>
+                                </form>
+                            </div>    
+                            <br>
+                            <br>
+                            <legend>Data Normalization</legend>
+                            <div id="normalizationDiv">
+                                <form class="form-inline" role="form">
+                                    <label class="radio-inline"><input type="radio" name="optradio" checked value="global">Global</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio" value="column">Column</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio" value="row">Row</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio" value="none">None</label> 
+                                </form>
+                            </div>
+                            <br>
+                            <br>
+                            <legend>Color Scheme</legend>
+                            <div id="colorSchemeDiv">
+                                <form class="form-inline" role="form">
+                                    <label class="radio-inline"><input type="radio" id="divergent" name="optcolor" checked value="divergent" > Divergent </label>
+                                    <label class="radio-inline"><input type="radio" id="sequential" name="optcolor"  value="sequential"> Sequential </label>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>                
+                <br>
+                <div class="tab-content " style="">
+                    <div class="tab-pane active" id="1" role="tabpanel" aria-labelledby="#hmatrix-tab">
+
+                        <div id="chart" style='overflow:auto; width:auto; height:900px;' >
+                            <div id="tree" width="1200" height="2400"></div>
+                        </div>
+                    </div>
+                    <!--                        end of tab 1 H-Matrix -->
+                    <div class="tab-pane" id="2" role="tabpanel" aria-labelledby="#textview-tab" style="width:80%; margin: 0 auto;">
+                        <div class="row" style="width: 100%;">
+                            <div id="left-panel" class="col-xs-6 col-md-6">
+                                <div id="filter-cat">
+                                    <div class="title">Filters (<span>none</span>)
+                                        <div class="buttons">
+                                            <a onclick="clickCatClear('#filter-cat')">Clear</a>
+                                        </div>
+                                    </div>
+                                    <label class="Grammar"><input type="checkbox" value=""><span class="errortag">Grammar</span></label>
+                                    <label class="Orthography"><input type="checkbox" value=""><span class="errortag">Orthography</span></label>
+                                    <label class="Style"><input type="checkbox" value=""><span class="errortag">Style</span></label>
+                                    <label class="Miscellaneous"><input type="checkbox" value=""><span class="errortag">Miscellaneous</span></label>
+                                    <label class="Collocations"><input type="checkbox" value=""><span class="errortag">Collocations</span></label>
+                                    <label class="Commonly Confused Words"><input type="checkbox" value=""><span class="errortag">Commonly Confused Words</span>
+                                    </label>
+                                </div><br>
+                                <table width="100%" class="stripe hover" id="datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>File</th>
+                                            <th>
+                                                <div class="dropdown show">
+                                                    <a class="btn btn-secondary dropdown-toggle dpd-filter" href="#" role="button" id="dpdFilterLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Language<span class="glyphicon glyphicon-filter" style="color: grey"></span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="#dpdFilterLang" id="filter-lang">
+                                                        <a onclick="clickCatClear('#filter-lang')">Clear Filter</a><br>                                                    
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="dropdown show">
+                                                    <a class="btn btn-secondary dropdown-toggle dpd-filter" href="#" role="button" id="dpdFilterTopic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Prompt<span class="glyphicon glyphicon-filter" style="color: grey"></span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="#dpdFilterTopic" id="filter-topic">
+                                                        <a onclick="clickCatClear('#filter-topic')">Clear Filter</a><br>                                                    
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div class="dropdown show">
+                                                    <a class="btn btn-secondary dropdown-toggle dpd-filter" href="#" role="button" id="dpdFilterLevel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Score Level<span class="glyphicon glyphicon-filter" style="color: grey"></span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="#dpdFilterLevel" id="filter-level">
+                                                        <a onclick="clickCatClear('#filter-level')">Clear Filter</a><br>            
+                                                    </div>
+                                                </div>
+                                            </th> 
+                                            <th>Errors</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class=" col-xs-12 col-md-6" id="pnText" style="height:auto;">
+                                <div  class="panel panel-default " >
+                                    <div class="panel-heading" id="essayTitle">Select a file to load</div>
+                                    <div class="panel-body" id="pnEssay" style="overflow:auto; width:auto; height:600px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="3" role="tabpanel" aria-labelledby="#about-tab">
+                        <div class=" col-xs-12 col-md-5" id="about-content">
+                            <h3>Project Details</h3>
+                            <p>vialab.ca project</p>
+
+                            Questions: MarianaAkemi.Shimabukuro@uoit.ca
+                        </div>
+                    </div>
+                </div>
+
+                <div id="load-overlay">
+                    <img src="img/loading.gif"/>
+                </div>
+                <br>
+                <span id="widthTest"></span> 
+                <ul class='custom-menu'>
+                    <li data-action="first">First thing</li>
+                    <li data-action="second">Second thing</li>
+                    <li data-action="third">Third thing</li>
+                </ul>
+                <div id="tooltip_matrix" class="hidden">
+                    <p><span id="value"></span></p>
+                </div>                
+
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+
+
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="css/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="css/vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="css/dist/js/sb-admin-2.js"></script>
+
+
+    </body>
+
+    <script type="text/javascript">
+        apiurl="";
+
+        function filterLevel(){
+            alert("click");            
+        }
+
+        function clickCatAll(id){
+            //            if(id == "#filter-cat") {
+            //                $("#filter-cat label").addClass("active");
+            //                $(".errortag.faded").removeClass("faded");
+            //            }
+            $(id+' :checkbox').each(function() {
+                this.checked = true;                        
+            });
+
+        }
+
+        function clickCatClear(id){
+            if(id == "#filter-cat") { 
+                $("#filter-cat label").removeClass("active");
+                $(".errortag.faded").removeClass("faded");
+            }
+            $(id+' :checkbox').each(function() {
+                this.checked = false;                        
+            });
+            $("#filter-cat .title span").text("none");
+            let table = $('#datatable').DataTable();
+            table.columns(4).search("").draw();
+        }
+
+
+        $("input[name='optradio']").on("change", (d)=>{
+            normal = $("input[name='optradio']:checked").val();
+            if(displayVal=='freq' || normal=='none'){
+                colorScheme = 'sequential';
+                $('#sequential').prop('checked', true);
+                $('#divergent').attr('disabled', true)
+            }
+            else
+                $('#divergent').attr('disabled', false);
+            recalculateScoreScale();
+        });
+
+        $("input[name='optvalue']").on("change", (d)=>{
+            displayVal = $("input[name='optvalue']:checked").val();
+            if(displayVal=='freq' || normal=='none'){
+                colorScheme = 'sequential';
+                $('#sequential').prop('checked', true);
+                $('#divergent').attr('disabled', true);
+            }
+            else
+                $('#divergent').attr('disabled', false);
+            recalculateScoreScale();            
+        });
+
+        $("input[name='optcolor']").on("change", (d)=>{
+            colorScheme = $("input[name='optcolor']:checked").val();
+            recalculateScoreScale();
+        });
+
+        $(document).ready(function() {
+            //default loading
+            //            createDendrogram();
+
+            var p = {dataset: "toefl", level: "rule", orderCol: "alpha", orderRow: "alpha", normal: "global", APIURL: apiurl};
+
+
+            drawMatrix(p);
+            textlevel(apiurl);
+            
+            
+
+            $(".dpd-filter").on("click", (e) => {
+                // Toggle dropdown if not already visible:
+                if (!$(e.target).parents('.dropdown').hasClass("open")){
+                    $(e.target).parents('.dropdown').addClass("open")
+                } else {
+                    $(e.target).parents('.dropdown').removeClass("open")
+                }
+                e.stopPropagation();
+            });
+
+            $("#filter-cat label").on("mouseup", (e) => {
+                $(e.target).parents("label").toggleClass("active");
+                $(".errortag."+e.target.textContent).attr("opacity", ".3");
+
+                let selected = $("#filter-cat label.active").length;
+
+                if(!selected) $("#filter-cat .title span").text("none");
+                else $("#filter-cat .title span").text(selected.toString());
+                let cats = $('#filter-cat label.active span');
+                let searchList = [];
+                _.forEach(cats, (obj, i)=>{
+                    searchList.push($(obj).html()); 
+                });
+                //                console.log(searchList);
+                let table = $('#datatable').DataTable();
+                let str = searchList.join(' ');
+                table.columns(5).search(str, false, true).draw();
+            });
+        });
+
+        function textlevel(APIURL){
+            var url = APIURL+'/filelistToeflAll';
+            //            switch($('#dataset option:selected').val()){
+            //                case 'toefl': url = APIURL+'/filelistToeflAll';
+            //                    break;
+            //                case 'icle': url = APIURL+"/filelistAll";
+            //                    break;
+            //                case 'visas': url = APIURL+"/filelistAll";
+            //                    break;
+            //            }
+            //            console.log(url);
+            var table = $('#datatable').DataTable({
+                responsive: true, 
+                ajax: { 
+                    url: url, 
+                    dataSrc: "" 
+                }, 
+                "pagingType": "simple",
+                "bFilter": true,                
+                columns: [{data:"file"},
+                          {data:"language"},
+                          {data:"prompt"},
+                          {data: "score_level"},                          
+                          {
+                              "data": "errors",
+                              "mRender": function (data, type, row) {
+                                  if (type === 'display') {
+                                      return "<div class='tbCellError' id='row-"+row.id+"' value="+row.id+" freq="+row.errors+"></div><div>("+row.errors+")</div>";
+                                  }
+
+                                  // 'sort', 'type' and undefined all just use the integer
+                                  return row.errors;
+                              }
+                          },
+                          {data: "categories"},
+                          {data: "id"}
+                         ],
+                "columnDefs": [
+                    { "width": "10%", "targets": 0 },
+                    { "width": "10%", "targets": 1 },
+                    { "width": "10%", "targets": 2 },
+                    { "width": "10%", "targets": 3 },
+                    { "width": "60%", "targets": 4 },               
+                    { "visible": false, "targets": 5 },
+                    { "visible": false, "targets": 6 }
+
+                ],
+                //                "order": [[ 6, "asc" ]],
+                "drawCallback": function( settings ) {
+                    createColError(this, APIURL);
+                    createColTopic(this, APIURL);
+                    $("#pnText").css("height",$("#left-panel").height());
+
+                },
+                select: {style: 'single'},
+                "initComplete": function(){
+                    createFilterMenus(this, APIURL);
+                    //                createColError(this, APIURL);
+
+                }
+            });
+
+
+
+            createTableRows(table, APIURL);
+
+
+            // $('#datatable tbody').on('click', 'tr', function () {
+            //     $("#datatable tbody tr").css("font-weight", "normal");
+            //     $(this).css("font-weight", "bold");
+            //     var row = table.row( this );
+            //     var data = row.data();
+            //     var urlFile, urlError;
+            //     switch($('#dataset option:selected').val()){
+            //         case 'toefl': 
+            //             urlError = '/getErrorEssay';
+            //             urlFile = '/getessayToefl';
+            //             break;
+            //         case 'icle': 
+            //             urlError = '/getErrorEssay';
+            //             urlFile = "/getessay";
+            //             break;
+            //         case 'visas': 
+            //             urlError = '/getErrorEssay';
+            //             urlFile = "/getessay";
+            //             break;
+            //     }
+            //     $("#essayTitle").html(data.file);
+
+            //     $.get(urlFile+"/id/"+data.file, function(essay){
+            //         $("#essayTitle").html(essay.file+" | "+essay.language+" | "+essay.score_level+" | "+essay.title);                    $("#pnEssay").html(essay.content.replace(/(?:\r\n|\r|\n)/g, '<BR>'));
+
+
+            //         $.get(urlError+"/id/"+essay.id, function(error){
+            //             tagErrorText(error, essay);
+            //         });
+            //     });
+
+            // } );
+
+
+
+        }
+
+    </script>
+
+</html>
+
+

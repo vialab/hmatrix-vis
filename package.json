@@ -1,0 +1,30 @@
+{
+  "name": "template-bench",
+  "version": "0.0.1",
+  "description": "Comparison of Node.js template languages.",
+  "keywords": [
+    "template",
+    "benchmark"
+  ],
+  "repository": "https://github.com/paularmstrong/node-templates.git",
+  "homepage": "http://paularmstrong.github.com/node-templates/",
+  "author": "Paul Armstrong <paul@paularmstrongdesigns.com>",
+  "dependencies": {
+    "ajax": "0.0.4",
+    "body-parser": "^1.18.2",
+    "brackets-npm-registry": "^0.6.5",
+    "clipboard": "^1.5.12",
+    "clustergrammer": "^1.19.4",
+    "clusters": "0.0.4",
+    "d3-svg-legend": "^1.13.0",
+    "datatables.net": "^1.10.16",
+    "datatables.net-dt": "^1.10.16",
+    "express": "4.14.0",
+    "fs": "0.0.2",
+    "levdist": "^2.2.3",
+    "lodash": "^4.11.1",
+    "mysql": "^2.10.2",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
+  }
+}

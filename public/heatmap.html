@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>ENTRAFX - English Transfer Effects Visual Analysis</title>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="js/client.js"></script>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="css/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/dist/css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">ENTRAFX - English Transfer Effects Visual Analysis</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+
+
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+
+                            <li class="active">
+                                <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            </li>
+                            <!--                        menu ICLE DB-->
+                            <li>
+                                <a href="#"><i class="fa fa-database fa-fw"></i> ICLE<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="icle.html">Explore</a>
+                                    </li>
+                                    <!--
+<li>
+<a href="morris.html">Create New</a>
+</li>                               
+-->
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <!--                        Menu Profile-->
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Profiles<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="profile_all.html">View All</a>
+                                    </li>
+                                    <li>
+                                        <a href="profile_new.html">Create New</a>
+                                    </li>                               
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+
+
+
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Errors</h1>
+                            <div id="chart"></div>
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        <style type ="text/css">  
+
+            .btn { 
+                display: inline; 
+            }
+
+
+            rect.bordered {
+                stroke: #E6E6E6;
+                stroke-width:2px;   
+            }
+
+            text.mono {
+                font-size: 9pt;
+                font-family: Consolas, courier;
+                fill: #aaa;
+            }
+
+            text.axis-workweek {
+                fill: #000;
+            }
+
+            text.axis-worktime {
+                fill: #000;
+            }</style>
+
+        <script type="text/javascript">
+            var margin = {top:50, right:0, bottom:100, left:30},
+                width=1160-margin.left-margin.right,
+                height=880-margin.top-margin.bottom,
+                gridSize=Math.floor(width/20),
+                legendElementWidth=gridSize*2.665,
+                buckets = 10,
+                colors = ["#f7fcf0","#e0f3db","#ccebc5","#a8ddb5","#7bccc4","#4eb3d3","#2b8cbe","#0868ac","#084081"],
+                category = ["Grammar", "Style", "Punctuation", "Typos", "Typography", "Collocations", "Misc.", "Confused Words", "Casing", "Punctuation", "Redundancy", "Semantics", "Non-standard Phrases"],
+                language = ["Bulgarian", "Chinese", "Czech", "Dutch", "Finnish", "French", "German", "Italian", "Japanese", "Norwegian", "Other", "Polish", "Russian", "Spanish", "Swedish", "Tswana", "Turkish", "Unknown"];
+
+            var heatmap;
+            var legend;
+
+            var svg = d3.select("#chart").append("svg")
+            .attr("width",width + margin.left+margin.right)
+            .attr("height", height+margin.top+margin.bottom)
+            .append("g")
+            .attr("transform", "translate("+ margin.left+","+margin.top+")");
+
+            d3.csv("data/error_category.csv", function(d){
+                //                console.log(d);
+                return {                    
+                    language:d.first_language,
+                    category:d.category,
+                    value:+parseInt(d.errors)
+                };
+            },
+                   function(error, data){
+
+                console.log(data);
+
+                var colorScale = d3.scale.quantile()
+                .domain([0, (d3.max(data, function(d){return d.value;})/2), d3.max(data, function(d){return d.value;})])
+                .range(colors);
+
+
+                var categoryLabels = svg.selectAll(".categoryLabel")
+                .data(category)
+                .enter().append("text")
+                .text(function (d) {return d; })
+                .attr("x","0")
+                .attr("y", function (d, i){ return i*gridSize;})
+                .style("text-anchor", "end")
+                //                .attr("transform", "translate(-6," + gridSize/1.5+")")                
+                .attr("class", function(d, i) { return ((i>=0 && i<=4) ? "categoryLabel mono axis axis-workweek": "categoryLabel mono axis"); });
+
+                var languageLabels = svg.selectAll(".languageLabel")
+                .data(language)
+                .enter().append("text")
+                .text(function(d){return d;})
+                .attr("x", function(d,i) {return 50+i * gridSize;})
+                .attr("y",0)
+                .style("text-anchor", "middle")
+                .attr("transform", "translate(" + gridSize/2+", -6)")
+                .attr("class", function(d, i) { return ((i>=9 && i<= 17) ? "timeLabel mono axis axis-worktime": "timeLabel mono axis"); });
+
+                var heatMap = svg.selectAll(".errors")
+                .data(data)
+                .enter().append("rect")
+                .attr("x", function(d) {
+                    return 50+(language.indexOf(d.language)+1) * gridSize;
+                })
+                .attr("y", function(d) {
+                    return (category.indexOf(d.category)+1) * gridSize;
+                })
+                .attr("rx", 4)
+                .attr("ry", 4)
+                .attr("class", "language bordered")
+                .attr("width", gridSize)
+                .attr("height", gridSize)
+                .style("fill", colors[0]);
+                console.log(heatMap);
+                heatMap.transition().duration(1000)
+                    .style("fill", function(d){ return colorScale(d.value);});
+
+                heatMap.append("title").text(function(d) {return d.value;});
+
+                var legend = svg.selectAll(".legend")
+                .data([0].concat(colorScale.quantiles()), function(d) {return d;})
+                .enter().append("g")
+                .attr("class", "legend");
+
+                legend.append("rect")
+                    .attr("x", function(d, i){ return legendElementWidth * i;})
+                    .attr("y", height)
+                    .attr("width", legendElementWidth)
+                    .attr("height", gridSize/2)
+                    .style("fill", function(d, i) {return colors[i]; });
+
+                legend.append("text")
+                    .attr("class", "mono")
+                    .text(function(d) {return "≥ "+d.toString().substr(0,4);})
+                    .attr("x", function(d, i){ return legendElementWidth *i;})
+                    .attr("y", height+ gridSize);
+
+
+
+                d3.select("#n1")
+                    .on("click", function() {
+                    updateHeatmap("1_1.csv");
+                });
+
+
+                d3.select("#n2")
+                    .on("click", function() {
+                    updateHeatmap("1_2.csv");
+                });		
+
+                ;		
+            }
+                  );
+            function updateHeatmap(x){
+                svg.selectAll(".legend").attr("opacity", 0);
+                d3.csv(x, function(d){
+                    return {
+                        day:+d.day2,
+                        hour:+d.hour,
+                        value:+d.per_day_per_hour
+                    };
+                },
+
+                       function(error, data){
+
+
+                    colorScale = d3.scale.quantile()
+                        .domain([0, (d3.max(data, function(d){return d.value;})/2), d3.max(data, function(d){return d.value;})])
+                        .range(colors);
+
+
+                    var heatMap = svg.selectAll(".hour")
+                    .data(data)
+                    .transition().duration(1000)
+                    .style("fill", function(d){ return colorScale(d.value);});
+
+                    heatMap.selectAll("title").text(function(d) {return d.value;});
+
+                    var legend = svg.selectAll(".legend")
+                    .data([0].concat(colorScale.quantiles()), function(d) {return d;})
+                    .enter().append("g")
+                    .attr("class", "legend");
+
+                    legend.append("rect")
+                        .attr("x", function(d, i){ return legendElementWidth * i;})
+                        .attr("y", height)
+                        .attr("width", legendElementWidth)
+                        .attr("height", gridSize/2)
+                        .style("fill", function(d, i) {return colors[i]; });
+
+                    legend.append("text")
+                        .attr("class", "mono")
+                        .text(function(d) {return "≥ "+d.toString().substr(0,4);})
+                        .attr("x", function(d, i){ return legendElementWidth *i;})
+                        .attr("y", height+ gridSize);
+
+
+
+                }
+                      )
+            }
+        </script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="css/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="css/vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="css/dist/js/sb-admin-2.js"></script>
+
+
+    </body>
+
+</html>
