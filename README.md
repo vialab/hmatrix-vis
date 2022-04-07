@@ -1,6 +1,7 @@
 # H-Matrix visualization
  H-Matrix visualization for cross-linguistic effects analysis
- More info at: vialab.ca/hmatrix
+ 
+ More info at: http://vialab.science.uoit.ca/portfolio/hmatrix 
  
  ## To change the data on the H-Matrix view
  You will ned to add your data on `server/hmatrix-data.js`
